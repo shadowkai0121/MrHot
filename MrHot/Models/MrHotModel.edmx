@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MrHotModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Members">
+          <Key>
+            <PropertyRef Name="fMemberID" />
+          </Key>
+          <Property Name="fMemberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fMemberUserID" Type="nvarchar" MaxLength="50" />
+          <Property Name="fMemberPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="fMemberName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fMemberEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="fMemberPhone" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="fOrderDetailId" />
+          </Key>
+          <Property Name="fOrderDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fOrderGuid" Type="nvarchar" MaxLength="50" />
+          <Property Name="fMemberUserID" Type="nvarchar" MaxLength="50" />
+          <Property Name="fProductID" Type="int" />
+          <Property Name="fProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fOrderDetailUnitePrice" Type="int" />
+          <Property Name="fOrderDetailQuantity" Type="int" />
+          <Property Name="fIsApproved" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="fOrderGuid" />
+          </Key>
+          <Property Name="fOrderGuid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fOrderDate" Type="datetime" />
+          <Property Name="fOrderTransportDate" Type="datetime" />
+          <Property Name="fOrderTotalPrice" Type="int" />
+          <Property Name="fMemberUserID" Type="nvarchar" MaxLength="50" />
+          <Property Name="fMemberName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fOrderReceiverName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fOrderContactPhone" Type="nchar" MaxLength="10" />
+          <Property Name="fOrderReceiverAddress" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="fProductID" />
+          </Key>
+          <Property Name="fProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fKind" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="fProductName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="fProductUnitPrice" Type="int" Nullable="false" />
+          <Property Name="fProductImage" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="fDisontinued" Type="nchar" MaxLength="1" />
+        </EntityType>
+        <EntityContainer Name="MrHotModelStoreContainer">
+          <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MrHotModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="fMemberID" />
+          </Key>
+          <Property Name="fMemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fMemberUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fMemberPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fMemberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fMemberEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fMemberPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="fOrderDetailId" />
+          </Key>
+          <Property Name="fOrderDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fOrderGuid" Type="String" />
+          <Property Name="fProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fOrderDetailUnitePrice" Type="Int32" />
+          <Property Name="fOrderDetailQuantity" Type="Int32" />
+          <Property Name="fIsApproved" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="fMemberUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fProductID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="fOrderGuid" />
+          </Key>
+          <Property Name="fOrderGuid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fOrderDate" Type="DateTime" Precision="3" />
+          <Property Name="fOrderTransportDate" Type="DateTime" Precision="3" />
+          <Property Name="fOrderTotalPrice" Type="Int32" />
+          <Property Name="fMemberUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fMemberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fOrderReceiverName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fOrderContactPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fOrderReceiverAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="fProductID" />
+          </Key>
+          <Property Name="fProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fKind" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fProductName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fProductUnitPrice" Type="Int32" Nullable="false" />
+          <Property Name="fProductImage" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fDisontinued" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="MrHotEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Members" EntityType="Self.Member" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MrHotModelStoreContainer" CdmEntityContainer="MrHotEntities2">
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="MrHotModel.Member">
+              <MappingFragment StoreEntitySet="Members">
+                <ScalarProperty Name="fMemberID" ColumnName="fMemberID" />
+                <ScalarProperty Name="fMemberUserID" ColumnName="fMemberUserID" />
+                <ScalarProperty Name="fMemberPassword" ColumnName="fMemberPassword" />
+                <ScalarProperty Name="fMemberName" ColumnName="fMemberName" />
+                <ScalarProperty Name="fMemberEmail" ColumnName="fMemberEmail" />
+                <ScalarProperty Name="fMemberPhone" ColumnName="fMemberPhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="MrHotModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="fProductID" ColumnName="fProductID" />
+                <ScalarProperty Name="fMemberUserID" ColumnName="fMemberUserID" />
+                <ScalarProperty Name="fOrderDetailId" ColumnName="fOrderDetailId" />
+                <ScalarProperty Name="fOrderGuid" ColumnName="fOrderGuid" />
+                <ScalarProperty Name="fProductName" ColumnName="fProductName" />
+                <ScalarProperty Name="fOrderDetailUnitePrice" ColumnName="fOrderDetailUnitePrice" />
+                <ScalarProperty Name="fOrderDetailQuantity" ColumnName="fOrderDetailQuantity" />
+                <ScalarProperty Name="fIsApproved" ColumnName="fIsApproved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="MrHotModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="fOrderGuid" ColumnName="fOrderGuid" />
+                <ScalarProperty Name="fOrderDate" ColumnName="fOrderDate" />
+                <ScalarProperty Name="fOrderTransportDate" ColumnName="fOrderTransportDate" />
+                <ScalarProperty Name="fOrderTotalPrice" ColumnName="fOrderTotalPrice" />
+                <ScalarProperty Name="fMemberUserID" ColumnName="fMemberUserID" />
+                <ScalarProperty Name="fMemberName" ColumnName="fMemberName" />
+                <ScalarProperty Name="fOrderReceiverName" ColumnName="fOrderReceiverName" />
+                <ScalarProperty Name="fOrderContactPhone" ColumnName="fOrderContactPhone" />
+                <ScalarProperty Name="fOrderReceiverAddress" ColumnName="fOrderReceiverAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="MrHotModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="fProductID" ColumnName="fProductID" />
+                <ScalarProperty Name="fKind" ColumnName="fKind" />
+                <ScalarProperty Name="fProductName" ColumnName="fProductName" />
+                <ScalarProperty Name="fProductUnitPrice" ColumnName="fProductUnitPrice" />
+                <ScalarProperty Name="fProductImage" ColumnName="fProductImage" />
+                <ScalarProperty Name="fDisontinued" ColumnName="fDisontinued" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

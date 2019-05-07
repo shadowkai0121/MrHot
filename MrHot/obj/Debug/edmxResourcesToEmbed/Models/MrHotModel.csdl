@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MrHotModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="fMemberID" />
+    </Key>
+    <Property Name="fMemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fMemberUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fMemberPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fMemberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fMemberEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fMemberPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="fOrderDetailId" />
+    </Key>
+    <Property Name="fOrderDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fOrderGuid" Type="String" />
+    <Property Name="fProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fOrderDetailUnitePrice" Type="Int32" />
+    <Property Name="fOrderDetailQuantity" Type="Int32" />
+    <Property Name="fIsApproved" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="fMemberUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fProductID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="fOrderGuid" />
+    </Key>
+    <Property Name="fOrderGuid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fOrderDate" Type="DateTime" Precision="3" />
+    <Property Name="fOrderTransportDate" Type="DateTime" Precision="3" />
+    <Property Name="fOrderTotalPrice" Type="Int32" />
+    <Property Name="fMemberUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fMemberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fOrderReceiverName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fOrderContactPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="fOrderReceiverAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="fProductID" />
+    </Key>
+    <Property Name="fProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fKind" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fProductName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fProductUnitPrice" Type="Int32" Nullable="false" />
+    <Property Name="fProductImage" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fDisontinued" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="MrHotEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Members" EntityType="Self.Member" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+  </EntityContainer>
+</Schema>

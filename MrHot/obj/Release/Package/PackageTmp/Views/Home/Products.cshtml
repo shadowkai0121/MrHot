@@ -1,0 +1,116 @@
+﻿@model List<MrHot.Models.Product>
+@{
+    ViewBag.Title = "湯老爺火鍋 - 好吃都在這";
+}
+<!--modal-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal_title"></h4>
+            </div>
+            <div class="modal-body">
+                <img class="img-fluid" id="modal_photo" src="" />
+            </div>
+            <div class="modal-footer">
+                <button id="close_modal" type="button" class="btn btn-default" data-dismiss="modal">close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/modal-->
+<!--menu-->
+
+<div class="row mx-auto" style="width: 80%;">
+    <div class="mx-auto">
+        <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#湯底" aria-expanded="false" aria-controls="soup">
+            <img class="img-fluid" src="~/img/icon/icon_soup.png" alt="">
+        </button>
+
+        <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#雞肉" aria-expanded="false" aria-controls="soup">
+            <img class="img-fluid" src="~/img/icon/icon_chicken.png" alt="">
+        </button>
+
+        <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#牛肉" aria-expanded="false" aria-controls="soup">
+            <img class="img-fluid" src="~/img/icon/icon_beef.png" alt="">
+        </button>
+
+        <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#豬肉" aria-expanded="false" aria-controls="soup">
+            <img class="img-fluid" src="~/img/icon/icon_pork.png" alt="">
+        </button>
+
+        <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#海鮮" aria-expanded="false" aria-controls="seafood">
+            <img class="img-fluid" src="~/img/icon/icon_seafood.png" alt="">
+        </button>
+
+        <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#蔬菜" aria-expanded="false" aria-controls="vegetable">
+            <img class="img-fluid" src="~/img/icon/icon_vegetable.png" alt="">
+        </button>
+    </div>
+</div>
+<!--/menu-->
+<!--依據不同的fKind分類菜單-->
+@{
+
+    @printMenu(getData("牛肉"));
+
+    @printMenu(getData("雞肉"));
+
+    @printMenu(getData("豬肉"));
+
+    @printMenu(getData("海鮮"));
+
+    @printMenu(getData("湯底"));
+
+    @printMenu(getData("蔬菜"));
+}
+@functions
+{
+    private List<MrHot.Models.Product> getData(string Kind)
+    {
+        var Product = Model
+        .Where(o => o.fKind == Kind)
+        .ToList();
+        return Product;
+    }
+}
+
+@helper printMenu(List<MrHot.Models.Product> product)
+{
+    int Cnt = 0;
+    foreach (var item in product)
+    {
+        // 每三個項目組成一個row
+        if (Cnt % 3 == 0)
+        {
+            @Html.Raw("<div class=\"row collapse mx-auto\" id=\"" + item.fKind + "\">")
+        }
+        <div class="col-md-4 card card-body">
+            <img id="@item.fProductName" name="@item.fProductName" class="menu_photo img-fluid rounded" src="@Url.Content(item.fProductImage)" data-toggle="modal" data-target="#myModal" role="button">
+            <a href="@Url.Action("addCar")?fProductID=@item.fProductID" class="menu btn-warning text-center" role="button">@item.fProductName</a>
+            @*<button value="@item.fProductName" class="menu btn-warning">@item.fProductName</button>*@
+        </div>
+        if (Cnt % 3 == 2 || Cnt == product.Count() - 1)
+        {
+            @Html.Raw("</div>")
+        }
+        Cnt++;
+    }
+}
+
+<script>
+    // modal
+    $('.menu_photo').click(function () {
+        var m_title = this.id;
+        var m_src = $(this).attr('src');
+        console.log(m_src);
+        $('#modal_photo').attr('src', m_src);
+        $('#modal_title').text(m_title);
+    });
+    // /modal
+    $(".menu").click(function () {
+        alert("加入購物車成功");
+    });
+</script>
+
+

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MrHotModelStoreContainer" CdmEntityContainer="MrHotEntities2">
+    <EntitySetMapping Name="Members">
+      <EntityTypeMapping TypeName="MrHotModel.Member">
+        <MappingFragment StoreEntitySet="Members">
+          <ScalarProperty Name="fMemberID" ColumnName="fMemberID" />
+          <ScalarProperty Name="fMemberUserID" ColumnName="fMemberUserID" />
+          <ScalarProperty Name="fMemberPassword" ColumnName="fMemberPassword" />
+          <ScalarProperty Name="fMemberName" ColumnName="fMemberName" />
+          <ScalarProperty Name="fMemberEmail" ColumnName="fMemberEmail" />
+          <ScalarProperty Name="fMemberPhone" ColumnName="fMemberPhone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="MrHotModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="fProductID" ColumnName="fProductID" />
+          <ScalarProperty Name="fMemberUserID" ColumnName="fMemberUserID" />
+          <ScalarProperty Name="fOrderDetailId" ColumnName="fOrderDetailId" />
+          <ScalarProperty Name="fOrderGuid" ColumnName="fOrderGuid" />
+          <ScalarProperty Name="fProductName" ColumnName="fProductName" />
+          <ScalarProperty Name="fOrderDetailUnitePrice" ColumnName="fOrderDetailUnitePrice" />
+          <ScalarProperty Name="fOrderDetailQuantity" ColumnName="fOrderDetailQuantity" />
+          <ScalarProperty Name="fIsApproved" ColumnName="fIsApproved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="MrHotModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="fOrderGuid" ColumnName="fOrderGuid" />
+          <ScalarProperty Name="fOrderDate" ColumnName="fOrderDate" />
+          <ScalarProperty Name="fOrderTransportDate" ColumnName="fOrderTransportDate" />
+          <ScalarProperty Name="fOrderTotalPrice" ColumnName="fOrderTotalPrice" />
+          <ScalarProperty Name="fMemberUserID" ColumnName="fMemberUserID" />
+          <ScalarProperty Name="fMemberName" ColumnName="fMemberName" />
+          <ScalarProperty Name="fOrderReceiverName" ColumnName="fOrderReceiverName" />
+          <ScalarProperty Name="fOrderContactPhone" ColumnName="fOrderContactPhone" />
+          <ScalarProperty Name="fOrderReceiverAddress" ColumnName="fOrderReceiverAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="MrHotModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="fProductID" ColumnName="fProductID" />
+          <ScalarProperty Name="fKind" ColumnName="fKind" />
+          <ScalarProperty Name="fProductName" ColumnName="fProductName" />
+          <ScalarProperty Name="fProductUnitPrice" ColumnName="fProductUnitPrice" />
+          <ScalarProperty Name="fProductImage" ColumnName="fProductImage" />
+          <ScalarProperty Name="fDisontinued" ColumnName="fDisontinued" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

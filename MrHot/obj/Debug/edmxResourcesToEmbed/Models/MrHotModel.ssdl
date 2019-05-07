@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MrHotModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Members">
+    <Key>
+      <PropertyRef Name="fMemberID" />
+    </Key>
+    <Property Name="fMemberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fMemberUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="fMemberPassword" Type="nvarchar" MaxLength="50" />
+    <Property Name="fMemberName" Type="nvarchar" MaxLength="50" />
+    <Property Name="fMemberEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="fMemberPhone" Type="char" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="OrderDetails">
+    <Key>
+      <PropertyRef Name="fOrderDetailId" />
+    </Key>
+    <Property Name="fOrderDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fOrderGuid" Type="nvarchar" MaxLength="50" />
+    <Property Name="fMemberUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="fProductID" Type="int" />
+    <Property Name="fProductName" Type="nvarchar" MaxLength="50" />
+    <Property Name="fOrderDetailUnitePrice" Type="int" />
+    <Property Name="fOrderDetailQuantity" Type="int" />
+    <Property Name="fIsApproved" Type="nvarchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="fOrderGuid" />
+    </Key>
+    <Property Name="fOrderGuid" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fOrderDate" Type="datetime" />
+    <Property Name="fOrderTransportDate" Type="datetime" />
+    <Property Name="fOrderTotalPrice" Type="int" />
+    <Property Name="fMemberUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="fMemberName" Type="nvarchar" MaxLength="50" />
+    <Property Name="fOrderReceiverName" Type="nvarchar" MaxLength="50" />
+    <Property Name="fOrderContactPhone" Type="nchar" MaxLength="10" />
+    <Property Name="fOrderReceiverAddress" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="fProductID" />
+    </Key>
+    <Property Name="fProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fKind" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="fProductName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="fProductUnitPrice" Type="int" Nullable="false" />
+    <Property Name="fProductImage" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="fDisontinued" Type="nchar" MaxLength="1" />
+  </EntityType>
+  <EntityContainer Name="MrHotModelStoreContainer">
+    <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

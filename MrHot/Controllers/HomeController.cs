@@ -63,7 +63,7 @@ namespace MrHot.Controllers
 
             //登入成功
             Session["Member"] = member;
-            return RedirectToAction("Index");
+            return RedirectToAction("Products");
         }
 
         // Get: Home/Register
@@ -90,7 +90,7 @@ namespace MrHot.Controllers
             {
                 db.Members.Add(NewMember);
                 db.SaveChanges();
-                return RedirectToAction("Login");
+                return RedirectToAction("Products");
             }
             ViewBag.Message = "帳號已經被註冊。";
             return View();
@@ -167,7 +167,7 @@ namespace MrHot.Controllers
         public ActionResult addCar(int fProductID)
         {
             if (Session["Member"] == null)
-            {
+            {               
                 return RedirectToAction("Login");
             }
             // 取得會員帳號並指定給 fUserId

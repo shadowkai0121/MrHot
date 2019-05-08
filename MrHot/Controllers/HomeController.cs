@@ -12,6 +12,11 @@ namespace MrHot.Controllers
     {
         MrHotEntities2 db = new MrHotEntities2();
 
+        public ActionResult test()
+        {
+            return View();
+        }
+
         // GET: Home
         public ActionResult Index()
         {
@@ -90,7 +95,7 @@ namespace MrHot.Controllers
             {
                 db.Members.Add(NewMember);
                 db.SaveChanges();
-                return RedirectToAction("Products");
+                return RedirectToAction("Products","_Layoutmember");
             }
             ViewBag.Message = "帳號已經被註冊。";
             return View();

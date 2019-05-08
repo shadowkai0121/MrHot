@@ -13,10 +13,10 @@ namespace MrHot.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MrHotEntities2 : DbContext
+    public partial class MrHotEntities : DbContext
     {
-        public MrHotEntities2()
-            : base("name=MrHotEntities2")
+        public MrHotEntities()
+            : base("name=MrHotEntities")
         {
         }
     
@@ -29,5 +29,6 @@ namespace MrHot.Models
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Reservation> Reservations { get; set; }
     }
 }

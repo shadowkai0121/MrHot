@@ -352,6 +352,9 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>MrHotModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Reservation.cs">
+      <DependentUpon>MrHotModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

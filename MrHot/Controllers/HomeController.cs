@@ -10,7 +10,7 @@ namespace MrHot.Controllers
 {
     public class HomeController : Controller
     {
-        MrHotEntities2 db = new MrHotEntities2();
+        MrHotEntities db = new MrHotEntities();
 
         public ActionResult test()
         {
@@ -95,7 +95,7 @@ namespace MrHot.Controllers
             {
                 db.Members.Add(NewMember);
                 db.SaveChanges();
-                return RedirectToAction("Products","_Layoutmember");
+                return RedirectToAction("Products", "_Layoutmember");
             }
             ViewBag.Message = "帳號已經被註冊。";
             return View();
@@ -172,7 +172,7 @@ namespace MrHot.Controllers
         public ActionResult addCar(int fProductID)
         {
             if (Session["Member"] == null)
-            {               
+            {
                 return RedirectToAction("Login");
             }
             // 取得會員帳號並指定給 fUserId
@@ -221,6 +221,7 @@ namespace MrHot.Controllers
             return RedirectToAction("ShoppingCar");
         }
 
+        // GET: /Products/AmountControl
         public ActionResult AmountControl(int fProductID, int fCommand)
         {
             var OrderDetail = db.OrderDetails
@@ -257,8 +258,29 @@ namespace MrHot.Controllers
             var OrderDetails = db.OrderDetails
                 .Where(o => o.fOrderGuid == guid && o.fMemberUserID == fUserID)
                 .ToList();
-            return View("OrderDetail", "_LayoutMember",OrderDetails);
+            return View("OrderDetail", "_LayoutMember", OrderDetails);
         }
         #endregion
+
+        #region 線上訂位
+        public ActionResult Reservation(string customerName, DateTime reserveDate, string contactPhone, int peopleCnt, string remark)
+        {
+            Reservation r = new Reservation();
+            r.fCustomerName = customerName;
+            r.fArriveTime = reserveDate;
+            r.fCustomerPhone = contactPhone;
+            r.Amount =(short)peopleCnt;
+            r.Remark = remark;
+            db.Reservations.Add(r);
+            db.SaveChanges();
+
+            if (Session["Member"] == null)
+            {
+                return View("Index", "_Layout");
+            }
+
+            return View("Index", "_LayoutMember");
+        }
+        #endregion /線上訂位
     }
 }

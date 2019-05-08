@@ -2,35 +2,55 @@
 @{
     ViewBag.Title = "Introduction";
 }
+<link rel="stylesheet" href="~/css/bootstrap.min.css">
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/jquery-3.3.1.min.js"></script>
 
-<div class="row mx-auto">
-    <div class="col-md-4" style="height: 600px">
-        <img class="img-fluid mh-100 mw-100" src="~/img/entrance_1.jpg" alt="">
-    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 
-    <div class="col-md-8" style="height: 600px">
-        <article id="story">
-            <section>
-                <div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;湯老爺以花雕雞為招牌，廣受喜愛,翻轉火鍋湯底的傳統印象，創新魔法湯底並且顛覆涮肉的吃法，改由一次燉煮的方式來細細品嚐。
-                </div>
-            </section><br>
+<link rel="stylesheet" href="~/css/mr_hot_mainpage.css">
+<link rel="stylesheet" href="~/css/main.css">
+<link rel="stylesheet" href="~/css/reset.css">
 
-            <section>
-                <div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;花雕雞的研發，是來自一個父親對兒子的愛，經營餐飲的父母，總在用餐時間，將美味及心力提供給客人，往往忙碌收拾過後看到兒子默默地吃著花雕雞泡麵，這是孩子最喜愛的風味，也常常是孩子最便利的晚餐，身為廚師的父親試著研發，希望孩子能吃的更均衡更營養，看著孩子吃得津津有味，臉上洋溢滿足的笑容，心裡便覺得十分欣慰。<br>
-                </div>
-            </section><br>
+<div class="page-body">
+    <div class="row mx-auto">
+        <div class="col-md-4" style="height: 600px">
+            <img class="img-fluid mh-100 mw-100" src="~/img/entrance_1.jpg" alt="">
+        </div>
 
-            <section>
-                <div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;於是在2017年創立了湯老爺，希望能將這樣的料理分享給更多的人
-                    湯老爺獨家秘製花雕雞以花雕酒及多種秘方秘製雞腿,展現出獨創且讓人回味的魔法湯底 “以肉入湯,以湯入菜”的概念 不僅溫和食補 也讓大家在工作忙碌之餘,”營養美味滿分”<br>
-                </div>
-            </section><br>
-        </article>
+        <div class="col-md-8" style="height: 600px">
+            <article id="story">
+                <section>
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;湯老爺以花雕雞為招牌，廣受喜愛,翻轉火鍋湯底的傳統印象，創新魔法湯底並且顛覆涮肉的吃法，改由一次燉煮的方式來細細品嚐。
+                    </div>
+                </section><br>
+
+                <section>
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;花雕雞的研發，是來自一個父親對兒子的愛，經營餐飲的父母，總在用餐時間，將美味及心力提供給客人，往往忙碌收拾過後看到兒子默默地吃著花雕雞泡麵，這是孩子最喜愛的風味，也常常是孩子最便利的晚餐，身為廚師的父親試著研發，希望孩子能吃的更均衡更營養，看著孩子吃得津津有味，臉上洋溢滿足的笑容，心裡便覺得十分欣慰。<br>
+                    </div>
+                </section><br>
+
+                <section>
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;於是在2017年創立了湯老爺，希望能將這樣的料理分享給更多的人
+                        湯老爺獨家秘製花雕雞以花雕酒及多種秘方秘製雞腿,展現出獨創且讓人回味的魔法湯底 “以肉入湯,以湯入菜”的概念 不僅溫和食補 也讓大家在工作忙碌之餘,”營養美味滿分”<br>
+                    </div>
+                </section><br>
+            </article>
+        </div>
     </div>
 </div>
-        </div>
+
+<script src="~/js/zoom.js"></script>
+<script>
+    document.querySelector('.page-body').addEventListener('click', function (event) {
+        event.preventDefault();
+        zoom.to({
+            element: event.target,
+        });
+    });
+</script>
 
 

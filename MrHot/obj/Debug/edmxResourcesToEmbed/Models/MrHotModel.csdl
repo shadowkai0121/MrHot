@@ -16,13 +16,13 @@
       <PropertyRef Name="fOrderDetailId" />
     </Key>
     <Property Name="fOrderDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="fOrderGuid" Type="String" />
+    <Property Name="fOrderGuid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fMemberUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fProductID" Type="Int32" />
     <Property Name="fProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="fOrderDetailUnitePrice" Type="Int32" />
     <Property Name="fOrderDetailQuantity" Type="Int32" />
     <Property Name="fIsApproved" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-    <Property Name="fMemberUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="fProductID" Type="Int32" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -49,10 +49,22 @@
     <Property Name="fProductImage" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="fDisontinued" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
   </EntityType>
-  <EntityContainer Name="MrHotEntities2" annotation:LazyLoadingEnabled="true">
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="ReservationID" />
+    </Key>
+    <Property Name="ReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fCustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fCustomerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Int16" />
+    <Property Name="fArriveTime" Type="DateTime" Precision="3" />
+    <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="MrHotEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Members" EntityType="Self.Member" />
     <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
     <EntitySet Name="Orders" EntityType="Self.Order" />
     <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Reservations" EntityType="Self.Reservation" />
   </EntityContainer>
 </Schema>

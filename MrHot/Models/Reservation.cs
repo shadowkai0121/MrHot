@@ -12,13 +12,13 @@ namespace MrHot.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Member
+    public partial class Reservation
     {
-        public int fMemberID { get; set; }
-        public string fMemberUserID { get; set; }
-        public string fMemberPassword { get; set; }
-        public string fMemberName { get; set; }
-        public string fMemberEmail { get; set; }
-        public string fMemberPhone { get; set; }
+        public int ReservationID { get; set; }
+        public string fCustomerName { get; set; }
+        public string fCustomerPhone { get; set; }
+        public Nullable<short> Amount { get; set; }
+        public Nullable<System.DateTime> fArriveTime { get; set; }
+        public string Remark { get; set; }
     }
 }

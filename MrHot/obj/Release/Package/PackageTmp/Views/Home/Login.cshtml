@@ -4,10 +4,9 @@
 }
 
 <h2>會員登入</h2>
-
+<hr />
 <form action="" method="post">
     <div class="form-horizontal">
-        <hr />
         <div class="form-group">
             <span class="control-label col-md-2">帳號</span>
             <div class="col-md-4">
@@ -27,9 +26,6 @@
             <span class="col-md-offset-2 col-md-10">
                 <input type="submit" class="btn btn-primary" name="name" value="登入" />
                 <a class="btn btn-info" href="/Home/Register">註冊</a>
-                @* 錯誤訊息 *@
-                @* ViewBag.Message = "帳號或密碼錯誤，登入失敗"; *@
-                <span style="color:darkred"> @ViewBag.Message</span>
             </span>
         </div>
     </div>

@@ -16,11 +16,11 @@ namespace MrHot.Models
     {
         public int fOrderDetailId { get; set; }
         public string fOrderGuid { get; set; }
+        public string fMemberUserID { get; set; }
+        public Nullable<int> fProductID { get; set; }
         public string fProductName { get; set; }
         public Nullable<int> fOrderDetailUnitePrice { get; set; }
         public Nullable<int> fOrderDetailQuantity { get; set; }
         public string fIsApproved { get; set; }
-        public string fMemberUserID { get; set; }
-        public Nullable<int> fProductID { get; set; }
     }
 }

@@ -352,6 +352,9 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>MrHotModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Reservation.cs">
+      <DependentUpon>MrHotModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -371,7 +374,6 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Products.cshtml" />
     <Content Include="Views\Shared\_LayoutMember.cshtml" />
     <Content Include="Views\Home\ShoppingCar.cshtml" />

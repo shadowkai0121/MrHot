@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js'></script>
+
+    <!--    線上bootstrap 4.0-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--    iconfont-->
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
+        integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--start  此頁增加的css，其他頁暫不用 -->
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="~/css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/gijgo.min.css">
+    <link rel="stylesheet" href="~/css/nice-select.css">
+    <link rel="stylesheet" href="~/css/all.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="~/css/style.css">
+    <!--Sweet alert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--     此網站的css-->
+    <link rel="stylesheet" href="~/css/master.css">
+    <link rel="stylesheet" href="~/css/product.css">
+    <!--end  此頁增加的css，其他頁暫不用 -->
+
+    <!-- jquery plugins here-->
+    <!-- popper js -->
+    <script src="~/js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="~/js/bootstrap.min.js"></script>
+    <!-- easing js -->
+    <script src="~/js/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="~/js/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="~/js/masonry.pkgd.js"></script>
+    <!-- particles js -->
+    <script src="~/js/owl.carousel.min.js"></script>
+    <!-- swiper js -->
+    <script src="~/js/slick.min.js"></script>
+    <script src="~/js/gijgo.min.js"></script>
+    <script src="~/js/jquery.nice-select.min.js"></script>
+    <!-- custom js -->
+    <script src="~/js/custom.js"></script>
+
+    <!--此網站的js-->
+    <script src="~/js/masterPage.js"></script>
+</head>
+
+<body>
+    <!--start  navbar-->
+    <!--網頁版的nav-->
+    <div class="topMenu">
+        <div id="navLogo">
+            <a href="masterPage.html"><img src="~/img/logo.png" alt=""></a>
+        </div>
+        <p id="navTitleFont">Restaurant</p>
+        <div class="navlinkGroup">
+            <a class="a-trigger" href="" id="navTitle">&nbsp;</a>
+            <a class="navShopCart a-trigger" href="#"><i class="fas fa-shopping-cart"></i>[{{itemQnt}}]</a>
+            <a class="a-trigger" href="#"><i class="fas fa-user"></i>會員</a>
+            <a class="a-trigger" href="productClass.html"><i class="fas fa-utensils"></i>菜單</a>
+            <a class="a-trigger" href="#"><i class="fas fa-store"></i>簡介</a>
+            <button id="rwdMenu" onclick="toggleClass()">
+                <span>menu</span>
+            </button>
+        </div>
+    </div>
+
+
+
+    <div class="wrapper">
+        <!--start 購物車-->
+        <div class="container-fluid">
+            <div class="shopCart">
+                <p></p>
+                <div id="shopCartContent">
+                    <p class="noItem">購物車內目前沒有商品</p>
+                    <shopcart v-bind:item="cartItem" v-for="cartItem in cartItems"></shopcart>
+                </div>
+
+                <div class="shopCartFooter row">
+                    <p>合計：{{sum}}</p>
+                    <a href="#">立即結帳</a>
+                </div>
+            </div>
+        </div>
+        <!--end 購物車-->
+    </div>
+
+    <!-- 購物車物品 -->
+    <script type="text/x-template" id="cartItem">
+    <transition leave-active-class="animated bounceOutRight">
+        <!--購物內容 1-->
+        <div v-bind:id="item.ProductName" class="shopCartItem">
+            <a href="#">
+                <img v-bind:src="'.'+item.Photo"/>
+                <div>
+                    <p>{{item.ProductName}}</p>
+                    <span>$ {{item.UnitPrice}}</span>
+                </div>
+            </a>
+            <span class="ItemQuantity">{{item.Quantity}} 份</span>
+            <button @click="$root.deleteItem(item.ProductName)" class="DelBtn btn btn-outline-secondary"><span class="fas fa-trash-alt"></span></button>
+        </div>
+    </transition>
+    </script>
+    <script>
+        var shopcartUrl = "http://localhost/exam/api/shopcart/read.php";
+        var deleteUrl = "http://localhost/exam/api/shopcart/delete.php"
+
+        Vue.component("shopcart", {
+            props: ["item", "isShow"],
+            template: "#cartItem"
+        });
+
+        var shopCartContent = new Vue({
+            el: "#shopCartContent",
+            data: {
+                cartItems: "",
+                show: true
+            },
+            methods: {
+                deleteItem(name) {
+                    $.ajax({
+                        type: "POST",
+                        url: deleteUrl,
+                        data: JSON.stringify({ ProductName: name }),
+                        dataType: "json",
+                        success: function (response) {
+                            console.log(response);
+                        }
+                    });
+                    var idx = 0;
+                    var total = 0;
+                    $.each(this.cartItems, function (index, value) {
+                        if (value.ProductName == name) {
+                            total = value.UnitPrice * value.Quantity;
+                            return idx = index;
+                        }
+                    });
+
+                    this.cartItems.splice(idx, 1);
+                    navbar.itemQnt -= 1;
+                    shopcartFooter.sum -= total;
+                }
+            },
+        })
+
+        var navbar = new Vue({
+            el: ".navlinkGroup",
+            data: {
+                itemQnt: ""
+            }
+        });
+
+        var shopcartFooter = new Vue({
+            el: ".shopCartFooter",
+            data: {
+                sum: ""
+            }
+        });
+
+        $.ajax({
+            type: "POST",
+            url: shopcartUrl,
+            success: function (response) {
+                shopCartContent.cartItems = response;
+                navbar.itemQnt = Object.keys(response).length;
+                $.each(response, function (index, value) {
+                    shopcartFooter.sum = Number(shopcartFooter.sum) + value.UnitPrice * value.Quantity;
+                })
+            }
+        });
+
+    </script>
+</body>
+
+</html>

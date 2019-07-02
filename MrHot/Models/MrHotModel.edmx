@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MrHotModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MrHotModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Members">
           <Key>
             <PropertyRef Name="fMemberID" />
@@ -54,30 +54,30 @@
           <Property Name="fProductImage" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="fDisontinued" Type="nchar" MaxLength="1" />
         </EntityType>
-        <EntityType Name="Reservation">
+        <EntityType Name="Reservations">
           <Key>
-            <PropertyRef Name="ReservationID" />
+            <PropertyRef Name="fReservationID" />
           </Key>
-          <Property Name="ReservationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fReservationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="fCustomerName" Type="nvarchar" MaxLength="50" />
           <Property Name="fCustomerPhone" Type="nvarchar" MaxLength="50" />
-          <Property Name="Amount" Type="smallint" />
           <Property Name="fArriveTime" Type="datetime" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="100" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="MrHotModelStoreContainer">
           <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservations" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MrHotModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Member">
+        <EntityType Name="Members">
           <Key>
             <PropertyRef Name="fMemberID" />
           </Key>
@@ -88,7 +88,7 @@
           <Property Name="fMemberEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="fMemberPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
         </EntityType>
-        <EntityType Name="OrderDetail">
+        <EntityType Name="OrderDetails">
           <Key>
             <PropertyRef Name="fOrderDetailId" />
           </Key>
@@ -101,7 +101,7 @@
           <Property Name="fOrderDetailQuantity" Type="Int32" />
           <Property Name="fIsApproved" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Order">
+        <EntityType Name="Orders">
           <Key>
             <PropertyRef Name="fOrderGuid" />
           </Key>
@@ -115,7 +115,7 @@
           <Property Name="fOrderContactPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="fOrderReceiverAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Product">
+        <EntityType Name="Products">
           <Key>
             <PropertyRef Name="fProductID" />
           </Key>
@@ -126,23 +126,23 @@
           <Property Name="fProductImage" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fDisontinued" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
         </EntityType>
-        <EntityType Name="Reservation">
+        <EntityType Name="Reservations">
           <Key>
-            <PropertyRef Name="ReservationID" />
+            <PropertyRef Name="fReservationID" />
           </Key>
-          <Property Name="ReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="fCustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="fCustomerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Amount" Type="Int16" />
           <Property Name="fArriveTime" Type="DateTime" Precision="3" />
-          <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="MrHotEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Members" EntityType="Self.Member" />
-          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
-          <EntitySet Name="Orders" EntityType="Self.Order" />
-          <EntitySet Name="Products" EntityType="Self.Product" />
-          <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+          <EntitySet Name="Members" EntityType="Self.Members" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="Products" EntityType="Self.Products" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservations" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -151,7 +151,7 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MrHotModelStoreContainer" CdmEntityContainer="MrHotEntities">
           <EntitySetMapping Name="Members">
-            <EntityTypeMapping TypeName="MrHotModel.Member">
+            <EntityTypeMapping TypeName="MrHotModel.Members">
               <MappingFragment StoreEntitySet="Members">
                 <ScalarProperty Name="fMemberID" ColumnName="fMemberID" />
                 <ScalarProperty Name="fMemberUserID" ColumnName="fMemberUserID" />
@@ -163,7 +163,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderDetails">
-            <EntityTypeMapping TypeName="MrHotModel.OrderDetail">
+            <EntityTypeMapping TypeName="MrHotModel.OrderDetails">
               <MappingFragment StoreEntitySet="OrderDetails">
                 <ScalarProperty Name="fOrderDetailId" ColumnName="fOrderDetailId" />
                 <ScalarProperty Name="fOrderGuid" ColumnName="fOrderGuid" />
@@ -177,7 +177,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="MrHotModel.Order">
+            <EntityTypeMapping TypeName="MrHotModel.Orders">
               <MappingFragment StoreEntitySet="Orders">
                 <ScalarProperty Name="fOrderGuid" ColumnName="fOrderGuid" />
                 <ScalarProperty Name="fOrderDate" ColumnName="fOrderDate" />
@@ -192,7 +192,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="MrHotModel.Product">
+            <EntityTypeMapping TypeName="MrHotModel.Products">
               <MappingFragment StoreEntitySet="Products">
                 <ScalarProperty Name="fProductID" ColumnName="fProductID" />
                 <ScalarProperty Name="fKind" ColumnName="fKind" />
@@ -204,13 +204,13 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Reservations">
-            <EntityTypeMapping TypeName="MrHotModel.Reservation">
-              <MappingFragment StoreEntitySet="Reservation">
-                <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+            <EntityTypeMapping TypeName="MrHotModel.Reservations">
+              <MappingFragment StoreEntitySet="Reservations">
+                <ScalarProperty Name="fReservationID" ColumnName="fReservationID" />
                 <ScalarProperty Name="fCustomerName" ColumnName="fCustomerName" />
                 <ScalarProperty Name="fCustomerPhone" ColumnName="fCustomerPhone" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="fArriveTime" ColumnName="fArriveTime" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -229,7 +229,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="無" />

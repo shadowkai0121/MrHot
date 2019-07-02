@@ -81,7 +81,7 @@ namespace MrHot.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(Member NewMember)
+        public ActionResult Register(Members NewMember)
         {
             if (ModelState.IsValid == false)
             { return View(); }
@@ -127,7 +127,7 @@ namespace MrHot.Controllers
             { return View("Login", "_Layout"); }
 
             // 取得會員帳號
-            string fMemberUserID = (Session["Member"] as Member).fMemberUserID;
+            string fMemberUserID = (Session["Member"] as Members).fMemberUserID;
 
             // 找出購物車內容
             var orderDetails = db.OrderDetails
@@ -139,13 +139,13 @@ namespace MrHot.Controllers
         [HttpPost]
         public ActionResult ShoppingCar(string CustomerName, string CustomerPhone, string CustomerAddress, int fOrderTotalPrice)
         {
-            string fUserId = (Session["Member"] as Member).fMemberUserID;
+            string fUserId = (Session["Member"] as Members).fMemberUserID;
 
             // 建立訂單編號
             string guid = Guid.NewGuid().ToString();
 
             // 建立訂單物件
-            Order newOrder = new Order();
+            Orders newOrder = new Orders();
             newOrder.fOrderGuid = guid;
             newOrder.fMemberUserID = fUserId;
             newOrder.fOrderTotalPrice = fOrderTotalPrice;
@@ -176,7 +176,7 @@ namespace MrHot.Controllers
                 return RedirectToAction("Login");
             }
             // 取得會員帳號並指定給 fUserId
-            string fUserId = (Session["Member"] as Member).fMemberUserID;
+            string fUserId = (Session["Member"] as Members).fMemberUserID;
 
             // 找出放入訂單明細的產品，該產品的fIsApproved == "否" 代表該產品是購物車狀態
             var currentCar = db.OrderDetails
@@ -192,7 +192,7 @@ namespace MrHot.Controllers
                     .FirstOrDefault();
 
                 // 建立新的明細
-                OrderDetail newOrder = new OrderDetail();
+                OrderDetails newOrder = new OrderDetails();
                 newOrder.fMemberUserID = fUserId;
                 newOrder.fProductID = fProductID;
                 newOrder.fProductName = product.fProductName;
@@ -241,7 +241,7 @@ namespace MrHot.Controllers
         {
             if (Session["Member"] == null)
             { return View("Login", "_Layout"); }
-            string fUserID = (Session["Member"] as Member).fMemberUserID;
+            string fUserID = (Session["Member"] as Members).fMemberUserID;
 
             var OrderList = db.Orders
                 .Where(o => o.fMemberUserID == fUserID)
@@ -253,7 +253,7 @@ namespace MrHot.Controllers
         {
             if (Session["Member"] == null)
             { return View("Login", "_Layout"); }
-            string fUserID = (Session["Member"] as Member).fMemberUserID;
+            string fUserID = (Session["Member"] as Members).fMemberUserID;
 
             var OrderDetails = db.OrderDetails
                 .Where(o => o.fOrderGuid == guid && o.fMemberUserID == fUserID)
@@ -265,11 +265,11 @@ namespace MrHot.Controllers
         #region 線上訂位
         public ActionResult Reservation(string customerName, DateTime reserveDate, string contactPhone, int peopleCnt, string remark)
         {
-            Reservation r = new Reservation();
+            Reservations r = new Reservations();
             r.fCustomerName = customerName;
             r.fArriveTime = reserveDate;
             r.fCustomerPhone = contactPhone;
-            r.Amount =(short)peopleCnt;
+            r.Amount = peopleCnt;
             r.Remark = remark;
             db.Reservations.Add(r);
             db.SaveChanges();

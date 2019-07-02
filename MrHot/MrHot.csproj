@@ -311,6 +311,7 @@
       <DependentUpon>MrHotModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\MrHot20190507090310 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\MrHot20190507090310 - Web Deploy1.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -325,7 +326,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Member.cs">
+    <Compile Include="Models\Members.cs">
       <DependentUpon>MrHotModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MrHotModel.Context.cs">
@@ -343,16 +344,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MrHotModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Order.cs">
+    <Compile Include="Models\OrderDetails.cs">
       <DependentUpon>MrHotModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\OrderDetail.cs">
+    <Compile Include="Models\Orders.cs">
       <DependentUpon>MrHotModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Product.cs">
+    <Compile Include="Models\Products.cs">
       <DependentUpon>MrHotModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Reservation.cs">
+    <Compile Include="Models\Reservations.cs">
       <DependentUpon>MrHotModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

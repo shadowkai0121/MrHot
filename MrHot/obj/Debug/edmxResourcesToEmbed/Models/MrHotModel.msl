@@ -2,7 +2,7 @@
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="MrHotModelStoreContainer" CdmEntityContainer="MrHotEntities">
     <EntitySetMapping Name="Members">
-      <EntityTypeMapping TypeName="MrHotModel.Member">
+      <EntityTypeMapping TypeName="MrHotModel.Members">
         <MappingFragment StoreEntitySet="Members">
           <ScalarProperty Name="fMemberID" ColumnName="fMemberID" />
           <ScalarProperty Name="fMemberUserID" ColumnName="fMemberUserID" />
@@ -14,7 +14,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="OrderDetails">
-      <EntityTypeMapping TypeName="MrHotModel.OrderDetail">
+      <EntityTypeMapping TypeName="MrHotModel.OrderDetails">
         <MappingFragment StoreEntitySet="OrderDetails">
           <ScalarProperty Name="fOrderDetailId" ColumnName="fOrderDetailId" />
           <ScalarProperty Name="fOrderGuid" ColumnName="fOrderGuid" />
@@ -28,7 +28,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="MrHotModel.Order">
+      <EntityTypeMapping TypeName="MrHotModel.Orders">
         <MappingFragment StoreEntitySet="Orders">
           <ScalarProperty Name="fOrderGuid" ColumnName="fOrderGuid" />
           <ScalarProperty Name="fOrderDate" ColumnName="fOrderDate" />
@@ -43,7 +43,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Products">
-      <EntityTypeMapping TypeName="MrHotModel.Product">
+      <EntityTypeMapping TypeName="MrHotModel.Products">
         <MappingFragment StoreEntitySet="Products">
           <ScalarProperty Name="fProductID" ColumnName="fProductID" />
           <ScalarProperty Name="fKind" ColumnName="fKind" />
@@ -55,13 +55,13 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Reservations">
-      <EntityTypeMapping TypeName="MrHotModel.Reservation">
-        <MappingFragment StoreEntitySet="Reservation">
-          <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+      <EntityTypeMapping TypeName="MrHotModel.Reservations">
+        <MappingFragment StoreEntitySet="Reservations">
+          <ScalarProperty Name="fReservationID" ColumnName="fReservationID" />
           <ScalarProperty Name="fCustomerName" ColumnName="fCustomerName" />
           <ScalarProperty Name="fCustomerPhone" ColumnName="fCustomerPhone" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="fArriveTime" ColumnName="fArriveTime" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="Remark" ColumnName="Remark" />
         </MappingFragment>
       </EntityTypeMapping>

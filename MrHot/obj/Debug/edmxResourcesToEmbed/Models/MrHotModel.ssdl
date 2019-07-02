@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="MrHotModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="MrHotModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Members">
     <Key>
       <PropertyRef Name="fMemberID" />
@@ -49,22 +49,22 @@
     <Property Name="fProductImage" Type="varchar" MaxLength="40" Nullable="false" />
     <Property Name="fDisontinued" Type="nchar" MaxLength="1" />
   </EntityType>
-  <EntityType Name="Reservation">
+  <EntityType Name="Reservations">
     <Key>
-      <PropertyRef Name="ReservationID" />
+      <PropertyRef Name="fReservationID" />
     </Key>
-    <Property Name="ReservationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fReservationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fCustomerName" Type="nvarchar" MaxLength="50" />
     <Property Name="fCustomerPhone" Type="nvarchar" MaxLength="50" />
-    <Property Name="Amount" Type="smallint" />
     <Property Name="fArriveTime" Type="datetime" />
-    <Property Name="Remark" Type="nvarchar" MaxLength="100" />
+    <Property Name="Amount" Type="int" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="MrHotModelStoreContainer">
     <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reservations" EntityType="Self.Reservations" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

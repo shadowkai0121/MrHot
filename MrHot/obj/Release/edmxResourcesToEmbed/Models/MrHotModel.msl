@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="MrHotModelStoreContainer" CdmEntityContainer="MrHotEntities2">
+  <EntityContainerMapping StorageEntityContainer="MrHotModelStoreContainer" CdmEntityContainer="MrHotEntities">
     <EntitySetMapping Name="Members">
       <EntityTypeMapping TypeName="MrHotModel.Member">
         <MappingFragment StoreEntitySet="Members">
@@ -16,10 +16,10 @@
     <EntitySetMapping Name="OrderDetails">
       <EntityTypeMapping TypeName="MrHotModel.OrderDetail">
         <MappingFragment StoreEntitySet="OrderDetails">
-          <ScalarProperty Name="fProductID" ColumnName="fProductID" />
-          <ScalarProperty Name="fMemberUserID" ColumnName="fMemberUserID" />
           <ScalarProperty Name="fOrderDetailId" ColumnName="fOrderDetailId" />
           <ScalarProperty Name="fOrderGuid" ColumnName="fOrderGuid" />
+          <ScalarProperty Name="fMemberUserID" ColumnName="fMemberUserID" />
+          <ScalarProperty Name="fProductID" ColumnName="fProductID" />
           <ScalarProperty Name="fProductName" ColumnName="fProductName" />
           <ScalarProperty Name="fOrderDetailUnitePrice" ColumnName="fOrderDetailUnitePrice" />
           <ScalarProperty Name="fOrderDetailQuantity" ColumnName="fOrderDetailQuantity" />
@@ -51,6 +51,18 @@
           <ScalarProperty Name="fProductUnitPrice" ColumnName="fProductUnitPrice" />
           <ScalarProperty Name="fProductImage" ColumnName="fProductImage" />
           <ScalarProperty Name="fDisontinued" ColumnName="fDisontinued" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="MrHotModel.Reservation">
+        <MappingFragment StoreEntitySet="Reservation">
+          <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+          <ScalarProperty Name="fCustomerName" ColumnName="fCustomerName" />
+          <ScalarProperty Name="fCustomerPhone" ColumnName="fCustomerPhone" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="fArriveTime" ColumnName="fArriveTime" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

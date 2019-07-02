@@ -49,10 +49,22 @@
     <Property Name="fProductImage" Type="varchar" MaxLength="40" Nullable="false" />
     <Property Name="fDisontinued" Type="nchar" MaxLength="1" />
   </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="ReservationID" />
+    </Key>
+    <Property Name="ReservationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fCustomerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="fCustomerPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Amount" Type="smallint" />
+    <Property Name="fArriveTime" Type="datetime" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="100" />
+  </EntityType>
   <EntityContainer Name="MrHotModelStoreContainer">
     <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

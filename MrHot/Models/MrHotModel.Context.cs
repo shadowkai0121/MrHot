@@ -25,10 +25,10 @@ namespace MrHot.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Member> Members { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Reservation> Reservations { get; set; }
+        public virtual DbSet<Members> Members { get; set; }
+        public virtual DbSet<OrderDetails> OrderDetails { get; set; }
+        public virtual DbSet<Orders> Orders { get; set; }
+        public virtual DbSet<Products> Products { get; set; }
+        public virtual DbSet<Reservations> Reservations { get; set; }
     }
 }
